@@ -7,10 +7,10 @@ using namespace std;
 vector<int> a[6];
 bool dfs_used[6] = {0};
 void dfs(int id) {
+	cout << id << " ";
 	for (int i = 0; i < a[id].size(); ++i) {
 		if (!dfs_used[id]) {
 			dfs_used[id] = 1;
-			cout << id << " ";
 			dfs(a[id][i]);
 		}
 	}
