@@ -1,16 +1,16 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <queue>
 using namespace std;
 
 vector<int> a[6];
-bool dfs_used[6] = {0};
+bool dfs_used[6] = { 0 };
 void dfs(int id) {
+	cout << id << " ";
 	for (int i = 0; i < a[id].size(); ++i) {
-		if (!dfs_used[id]) {
-			dfs_used[id] = 1;
-			cout << id << " ";
+		if (!dfs_used[a[id][i]]) {
+			dfs_used[a[id][i]] = 1;
 			dfs(a[id][i]);
 		}
 	}
@@ -29,13 +29,14 @@ int main() {
 		}
 		cout << endl;
 	}
+	dfs_used[1] = 1;
 	dfs(1); cout << endl;
 	bool used[6] = { 0 };
 	queue<int> bfs;
 	bfs.push(1);
 	used[1] = 1;
 	while (!bfs.empty()) {
-		int x=bfs.front();
+		int x = bfs.front();
 		cout << x << " ";
 		for (int i = 0; i < a[x].size(); ++i) {
 			if (used[a[x][i]]) continue;
@@ -45,5 +46,4 @@ int main() {
 		bfs.pop();
 	}
 	cout << endl;
-
 }
